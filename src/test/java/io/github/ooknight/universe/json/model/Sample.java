@@ -4,17 +4,25 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.Objects;
 
 public class Sample {
 
-    private Long v1 = 1L;
-    private String v2 = "sample";
-    private Boolean v3 = true;
-    private LocalDateTime v4 = LocalDateTime.now();
-    private LocalDate v5 = LocalDate.now();
-    private LocalTime v6 = LocalTime.now();
-    private Date v7 = new Date();
+    private Sample v0;
+    private Long v1;
+    private String v2;
+    private Boolean v3;
+    private LocalDateTime v4;
+    private LocalDate v5;
+    private LocalTime v6;
+    private Date v7;
 
+    public Sample getV0() {
+        return v0;
+    }
+    public void setV0(Sample v0) {
+        this.v0 = v0;
+    }
     public Long getV1() {
         return v1;
     }
@@ -61,7 +69,8 @@ public class Sample {
     @Override
     public String toString() {
         return "Sample{" +
-            "v1=" + v1 +
+            "v0=" + v0 +
+            ", v1=" + v1 +
             ", v2='" + v2 + '\'' +
             ", v3=" + v3 +
             ", v4=" + v4 +
@@ -69,6 +78,18 @@ public class Sample {
             ", v6=" + v6 +
             ", v7=" + v7 +
             '}';
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Sample)) return false;
+        Sample sample = (Sample) object;
+        return Objects.equals(v0, sample.v0) && Objects.equals(v1, sample.v1) && Objects.equals(v2, sample.v2) && Objects.equals(v3, sample.v3) && Objects.equals(v4, sample.v4) && Objects.equals(v5, sample.v5) && Objects.equals(v6, sample.v6) && Objects.equals(v7, sample.v7);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(v0, v1, v2, v3, v4, v5, v6, v7);
     }
 
 }
