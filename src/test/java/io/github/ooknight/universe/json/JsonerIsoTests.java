@@ -57,10 +57,4 @@ public class JsonerIsoTests {
         return "{\"v0\":{\"v1\":0,\"v2\":\"root\"},\"v1\":1,\"v2\":\"sample\",\"v3\":true,\"v4\":\"2026-05-04T03:02:01\",\"v5\":\"2026-05-04\",\"v6\":\"03:02:01\",\"v7\":\"2026-05-04T03:02:01.999\"}";
     }
 
-    @Test
-    public void test() {
-        System.out.println(jsoner.iso().json(LocalDateTime.now()));
-        System.out.println(jsoner.iso().json(LocalDateTime.of(2026, 5, 4, 3, 2, 1,1)));
-    }
-
 }
