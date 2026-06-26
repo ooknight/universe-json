@@ -6,9 +6,9 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.Objects;
 
-public class Sample {
+public class SampleClass {
 
-    private Sample v0;
+    private SampleClass v0;
     private Long v1;
     private String v2;
     private Boolean v3;
@@ -17,10 +17,10 @@ public class Sample {
     private LocalTime v6;
     private Date v7;
 
-    public Sample getV0() {
+    public SampleClass getV0() {
         return v0;
     }
-    public void setV0(Sample v0) {
+    public void setV0(SampleClass v0) {
         this.v0 = v0;
     }
     public Long getV1() {
@@ -82,8 +82,7 @@ public class Sample {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof Sample)) return false;
-        Sample sample = (Sample) object;
+        if (!(object instanceof SampleClass sample)) return false;
         return Objects.equals(v0, sample.v0) && Objects.equals(v1, sample.v1) && Objects.equals(v2, sample.v2) && Objects.equals(v3, sample.v3) && Objects.equals(v4, sample.v4) && Objects.equals(v5, sample.v5) && Objects.equals(v6, sample.v6) && Objects.equals(v7, sample.v7);
     }
 

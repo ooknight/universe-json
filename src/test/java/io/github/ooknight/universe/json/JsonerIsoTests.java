@@ -1,6 +1,7 @@
 package io.github.ooknight.universe.json;
 
-import io.github.ooknight.universe.json.model.Sample;
+import io.github.ooknight.universe.json.model.SampleClass;
+import io.github.ooknight.universe.json.model.SampleRecord;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -15,14 +16,14 @@ public class JsonerIsoTests {
 
     @Test
     public void testJson() {
-        String result = jsoner.iso().json(sample());
+        String result = jsoner.iso().json(sampleRecord());
         assertEquals(content(), result);
     }
 
     @Test
     public void testParse() {
-        Sample result = jsoner.iso().parse(content(), Sample.class);
-        assertEquals(sample(), result);
+        SampleRecord result = jsoner.iso().parse(content(), SampleRecord.class);
+        assertEquals(sampleRecord().toString(), result.toString());
     }
 
     @Test
@@ -37,11 +38,11 @@ public class JsonerIsoTests {
         assertEquals("2026-05-04T03:02:01.999", jsoner.iso().string(content(), "v7"));
     }
 
-    private Sample sample() {
-        Sample root = new Sample();
+    private SampleClass sampleClass() {
+        SampleClass root = new SampleClass();
         root.setV1(0L);
         root.setV2("root");
-        Sample sample = new Sample();
+        SampleClass sample = new SampleClass();
         sample.setV0(root);
         sample.setV1(1L);
         sample.setV2("sample");
@@ -51,6 +52,28 @@ public class JsonerIsoTests {
         sample.setV6(LocalTime.of(3, 2, 1));
         sample.setV7(new Date(1777834921999L));
         return sample;
+    }
+
+    private SampleRecord sampleRecord() {
+        return new SampleRecord(
+            new SampleRecord(
+                null,
+                0L,
+                "root",
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            1L,
+            "sample",
+            true,
+            LocalDateTime.of(2026, 5, 4, 3, 2, 1),
+            LocalDate.of(2026, 5, 4),
+            LocalTime.of(3, 2, 1),
+            new Date(1777834921999L)
+        );
     }
 
     private String content() {
